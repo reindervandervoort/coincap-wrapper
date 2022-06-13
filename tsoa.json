@@ -1,0 +1,36 @@
+{
+    "entryFile": "./src/server.ts",
+    "controllerPathGlobs": [
+      "./src/service-layer/controllers/**/*controller.ts"
+    ],
+    "noImplicitAdditionalProperties": "throw-on-extras",
+    "specMerging": "deepmerge",
+    "spec": {
+      "spec": {
+        "servers": [
+          {
+            "url": "http://127.0.0.1:80/api/v1",
+            "description": "Local development"
+          }
+        ]
+      },
+      "basePath": "/api/v1",
+      "specVersion": 3,
+      "outputDirectory": "./api/v1",
+      "tags": [
+        {
+          "name": "Application",
+          "description": "Placeholder for Application Service",
+          "externalDocs": {
+            "description": "API endpoint",
+            "url": "https://api-pmis.bbjnyc.com/api/v1/application"
+          }
+        }
+      ]
+    },
+    "routes": {
+      "basePath": "/api/v1",
+      "routesDir": "./src/middleware",
+      "middleware": "express"
+    }
+  }

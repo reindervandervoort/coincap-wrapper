@@ -1,0 +1,66 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "coincap-wrapper",
+		"version": "1.0.0",
+		"description": "coincap wrapper",
+		"license": {
+			"name": "AGPL-3.0-or-later"
+		},
+		"contact": {
+			"name": "Reinder van der Voort"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/health": {
+			"get": {
+				"operationId": "Get",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "boolean"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server error"
+					}
+				},
+				"tags": [
+					"Health Checks"
+				],
+				"security": [],
+				"parameters": []
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "http://127.0.0.1:80/api/v1",
+			"description": "Local development"
+		}
+	],
+	"tags": [
+		{
+			"name": "Application",
+			"description": "Placeholder for Application Service",
+			"externalDocs": {
+				"description": "API endpoint",
+				"url": "https://api-pmis.bbjnyc.com/api/v1/application"
+			}
+		}
+	]
+}
