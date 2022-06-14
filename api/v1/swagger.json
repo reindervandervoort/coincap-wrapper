@@ -5,7 +5,170 @@
 		"parameters": {},
 		"requestBodies": {},
 		"responses": {},
-		"schemas": {},
+		"schemas": {
+			"Asset": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"rank": {
+						"type": "string"
+					},
+					"symbol": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string",
+						"nullable": true
+					},
+					"supply": {
+						"type": "string",
+						"nullable": true
+					},
+					"maxSupply": {
+						"type": "string",
+						"nullable": true
+					},
+					"marketCapUsd": {
+						"type": "string",
+						"nullable": true
+					},
+					"volumeUsd24Hr": {
+						"type": "string",
+						"nullable": true
+					},
+					"priceUsd": {
+						"type": "string",
+						"nullable": true
+					},
+					"changePercent24Hr": {
+						"type": "string",
+						"nullable": true
+					},
+					"vwap24Hr": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"required": [
+					"id",
+					"rank",
+					"symbol",
+					"name",
+					"supply",
+					"maxSupply",
+					"marketCapUsd",
+					"volumeUsd24Hr",
+					"priceUsd",
+					"changePercent24Hr",
+					"vwap24Hr"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UUID": {
+				"type": "string",
+				"format": "uuid",
+				"description": "Stringified UUIDv4.\r\nSee [RFC 4112](https://tools.ietf.org/html/rfc4122)",
+				"pattern": "[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}"
+			},
+			"IBalance": {
+				"properties": {
+					"assetId": {
+						"type": "string"
+					},
+					"quantity": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"assetId",
+					"quantity"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Transaction": {
+				"properties": {
+					"purchased": {
+						"$ref": "#/components/schemas/IBalance"
+					},
+					"mediumOfExchange": {
+						"$ref": "#/components/schemas/IBalance"
+					},
+					"walletTo": {
+						"$ref": "#/components/schemas/UUID"
+					},
+					"walletFrom": {
+						"$ref": "#/components/schemas/UUID"
+					},
+					"id": {
+						"$ref": "#/components/schemas/UUID"
+					}
+				},
+				"required": [
+					"purchased",
+					"mediumOfExchange",
+					"walletTo",
+					"walletFrom",
+					"id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ITransaction": {
+				"properties": {
+					"purchased": {
+						"$ref": "#/components/schemas/IBalance"
+					},
+					"mediumOfExchange": {
+						"$ref": "#/components/schemas/IBalance"
+					},
+					"walletTo": {
+						"$ref": "#/components/schemas/UUID"
+					},
+					"walletFrom": {
+						"$ref": "#/components/schemas/UUID"
+					}
+				},
+				"required": [
+					"purchased",
+					"mediumOfExchange",
+					"walletTo",
+					"walletFrom"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Record_string.number_": {
+				"properties": {},
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"Wallet": {
+				"properties": {
+					"id": {
+						"$ref": "#/components/schemas/UUID"
+					},
+					"balances": {
+						"$ref": "#/components/schemas/Record_string.number_"
+					},
+					"balanceUSDEquivalenceAtPurchase": {
+						"type": "number",
+						"format": "double",
+						"default": 0
+					}
+				},
+				"required": [
+					"id",
+					"balances",
+					"balanceUSDEquivalenceAtPurchase"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
 		"securitySchemes": {}
 	},
 	"info": {
@@ -21,6 +184,168 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
+		"/Asset": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Asset"
+									},
+									"type": "array"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Server Error"
+					}
+				},
+				"tags": [
+					"Asset"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "filter",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "ids",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "skip",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"id",
+								"rank",
+								"symbol",
+								"name",
+								"supply",
+								"maxSupply",
+								"marketCapUsd",
+								"volumeUsd24Hr",
+								"priceUsd",
+								"changePercent24Hr",
+								"vwap24Hr"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/Asset/{id}": {
+			"get": {
+				"operationId": "Get",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Asset"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Server Error"
+					}
+				},
+				"tags": [
+					"Asset"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Asset/{id}/USD": {
+			"get": {
+				"operationId": "GetUSD",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number",
+									"format": "double"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Server Error"
+					}
+				},
+				"tags": [
+					"Asset"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
 		"/health": {
 			"get": {
 				"operationId": "Get",
@@ -45,21 +370,245 @@
 				"security": [],
 				"parameters": []
 			}
+		},
+		"/Transaction/{id}": {
+			"get": {
+				"operationId": "Get",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Transaction"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Server Error"
+					}
+				},
+				"tags": [
+					"Transaction"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/UUID"
+						}
+					}
+				]
+			}
+		},
+		"/Transaction": {
+			"post": {
+				"operationId": "Post",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Transaction"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error"
+					}
+				},
+				"tags": [
+					"Transaction"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ITransaction"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Wallet/{id}": {
+			"get": {
+				"operationId": "Get",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Wallet"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Server Error"
+					}
+				},
+				"tags": [
+					"Wallet"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/UUID"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Server Error"
+					}
+				},
+				"tags": [
+					"Wallet"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/UUID"
+						}
+					}
+				]
+			}
+		},
+		"/Wallet/{id}/gain": {
+			"get": {
+				"operationId": "GetGain",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number",
+									"format": "double"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Server Error"
+					}
+				},
+				"tags": [
+					"Wallet"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/UUID"
+						}
+					}
+				]
+			}
+		},
+		"/Wallet": {
+			"post": {
+				"operationId": "Post",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Wallet"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error"
+					}
+				},
+				"tags": [
+					"Wallet"
+				],
+				"security": [],
+				"parameters": []
+			}
 		}
 	},
 	"servers": [
 		{
-			"url": "http://127.0.0.1:80/api/v1",
+			"url": "http://localhost/api/v1",
 			"description": "Local development"
 		}
 	],
 	"tags": [
 		{
-			"name": "Application",
-			"description": "Placeholder for Application Service",
+			"name": "Health",
+			"description": "Health check endpoint(s)",
 			"externalDocs": {
-				"description": "API endpoint",
-				"url": "https://api-pmis.bbjnyc.com/api/v1/application"
+				"description": "Health check endpoint(s)",
+				"url": "https://localhost/api/v1/health"
+			}
+		},
+		{
+			"name": "Asset",
+			"description": "The asset price is a volume-weighted average calculated by collecting ticker data from exchanges. Each exchange contributes to this price in relation to their volume, meaning higher volume exchanges have more affect on this global price. All values are translated into USD (United States Dollar) and can be translated into other units of measurement through the /rates endpoint.",
+			"externalDocs": {
+				"description": "The asset price is a volume-weighted average calculated by collecting ticker data from exchanges. Each exchange contributes to this price in relation to their volume, meaning higher volume exchanges have more affect on this global price. All values are translated into USD (United States Dollar) and can be translated into other units of measurement through the /rates endpoint.",
+				"url": "https://localhost/api/v1/asset"
+			}
+		},
+		{
+			"name": "Wallet",
+			"description": "The wallet endpoints",
+			"externalDocs": {
+				"description": "The wallet endpoints",
+				"url": "https://localhost/api/v1/wallet"
+			}
+		},
+		{
+			"name": "Transaction",
+			"description": "The transaction endpoints",
+			"externalDocs": {
+				"description": "The transaction endpoints",
+				"url": "https://localhost/api/v1/transaction"
 			}
 		}
 	]

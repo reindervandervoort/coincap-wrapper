@@ -1,14 +1,19 @@
+/* tslint:disable */
+/* eslint-disable */
+
+import { Asset } from "./asset";
+
 // v2.0.1
 //
 // CoinCap is a useful tool for real-time pricing and market activity for over 1,000
 // cryptocurrencies. By collecting exchange data from thousands of markets, we are able to
-// offer transparent and accurate data on asset price and availability. 
+// offer transparent and accurate data on asset price and availability.
 //
 // Our API will offer insight into exactly which exchanges and markets contribute to our
-// pricing. 
+// pricing.
 //
 // For all endpoints, a single page offers 100 responses by default and supports up to 2,000
-// responses per page upon requests. 
+// responses per page upon requests.
 //
 // ## Status Codes and Error Response
 //
@@ -43,7 +48,7 @@
 //
 // `Accept-Encoding: gzip` or `Accept-Encoding: deflate`
 //
-// If you have an API Key use it as a `Bearer Token`. 
+// If you have an API Key use it as a `Bearer Token`.
 //
 // Programmatically, set the header field `Authorization=Bearer XXXX`
 //
@@ -99,8 +104,8 @@
  * | vwap24Hr          | Volume Weighted Average Price in the last 24 hours  |
  */
 export interface Assets {
-    data:      { [key: string]: null | string }[];
-    timestamp: number;
+  data: Asset[];
+  timestamp: number;
 }
 
 /**
@@ -134,8 +139,8 @@ export interface Assets {
  * | vwap24Hr            |     Volume Weighted Average Price in the last 24 hours |
  */
 export interface AssetsID {
-    data:      { [key: string]: null | string };
-    timestamp: number;
+  data: Asset;
+  timestamp: number;
 }
 
 /**
@@ -147,6 +152,7 @@ export interface AssetsID {
  *
  * | Key       | Required | Value          |
  * Description                                                                 |
+ *
  *
  * |-----------|----------|----------------|----------------------------------------------------------------------------|
  * | id        | required | bitcoin        | asset
@@ -167,13 +173,13 @@ export interface AssetsID {
  * | time      | timestamp in UNIX in milliseconds |
  */
 export interface AssetsIDHistory {
-    data:      AssetsIDHistoryDatum[];
-    timestamp: number;
+  data: AssetsIDHistoryDatum[];
+  timestamp: number;
 }
 
 export interface AssetsIDHistoryDatum {
-    priceUsd: string;
-    time:     number;
+  priceUsd: string;
+  time: number;
 }
 
 /**
@@ -204,41 +210,41 @@ export interface AssetsIDHistoryDatum {
  * | volumePercent | percent of quote asset volume |
  */
 export interface AssetsIDMarkets {
-    data:      AssetsIDMarketsDatum[];
-    timestamp: number;
+  data: AssetsIDMarketsDatum[];
+  timestamp: number;
 }
 
 export interface AssetsIDMarketsDatum {
-    exchangeId:    string;
-    baseId:        string;
-    quoteId:       QuoteID;
-    baseSymbol:    string;
-    quoteSymbol:   QuoteSymbol;
-    volumeUsd24Hr: string;
-    priceUsd:      string;
-    volumePercent: string;
+  exchangeId: string;
+  baseId: string;
+  quoteId: QuoteID;
+  baseSymbol: string;
+  quoteSymbol: QuoteSymbol;
+  volumeUsd24Hr: string;
+  priceUsd: string;
+  volumePercent: string;
 }
 
 export enum QuoteID {
-    Bitcoin = "bitcoin",
-    Euro = "euro",
-    JapaneseYen = "japanese-yen",
-    PolishZloty = "polish-zloty",
-    RussianRuble = "russian-ruble",
-    SouthKoreanWon = "south-korean-won",
-    Tether = "tether",
-    UnitedStatesDollar = "united-states-dollar",
+  Bitcoin = "bitcoin",
+  Euro = "euro",
+  JapaneseYen = "japanese-yen",
+  PolishZloty = "polish-zloty",
+  RussianRuble = "russian-ruble",
+  SouthKoreanWon = "south-korean-won",
+  Tether = "tether",
+  UnitedStatesDollar = "united-states-dollar",
 }
 
 export enum QuoteSymbol {
-    Btc = "BTC",
-    Eur = "EUR",
-    Jpy = "JPY",
-    Krw = "KRW",
-    Pln = "PLN",
-    Rub = "RUB",
-    Usd = "USD",
-    Usdt = "USDT",
+  Btc = "BTC",
+  Eur = "EUR",
+  Jpy = "JPY",
+  Krw = "KRW",
+  Pln = "PLN",
+  Rub = "RUB",
+  Usd = "USD",
+  Usdt = "USDT",
 }
 
 /**
@@ -257,21 +263,21 @@ export enum QuoteSymbol {
  * | type                | type of currency - fiat or crypto |
  */
 export interface Rates {
-    data:      RatesData[];
-    timestamp: number;
+  data: RatesData[];
+  timestamp: number;
 }
 
 export interface RatesData {
-    id:             string;
-    symbol:         string;
-    currencySymbol: null | string;
-    type:           Type;
-    rateUsd:        string;
+  id: string;
+  symbol: string;
+  currencySymbol: null | string;
+  type: Type;
+  rateUsd: string;
 }
 
 export enum Type {
-    Crypto = "crypto",
-    Fiat = "fiat",
+  Crypto = "crypto",
+  Fiat = "fiat",
 }
 
 /**
@@ -296,8 +302,8 @@ export enum Type {
  * | type                | type of currency - fiat or crypto |
  */
 export interface RatesID {
-    data:      RatesData;
-    timestamp: number;
+  data: RatesData;
+  timestamp: number;
 }
 
 /**
@@ -324,20 +330,20 @@ export interface RatesID {
  * this exchange |
  */
 export interface Exchanges {
-    data:      ExchangesData[];
-    timestamp: number;
+  data: ExchangesData[];
+  timestamp: number;
 }
 
 export interface ExchangesData {
-    id:                 string;
-    name:               string;
-    rank:               string;
-    percentTotalVolume: string;
-    volumeUsd:          string;
-    tradingPairs:       string;
-    socket:             boolean;
-    exchangeUrl:        string;
-    updated:            number;
+  id: string;
+  name: string;
+  rank: string;
+  percentTotalVolume: string;
+  volumeUsd: string;
+  tradingPairs: string;
+  socket: boolean;
+  exchangeUrl: string;
+  updated: number;
 }
 
 /**
@@ -370,8 +376,8 @@ export interface ExchangesData {
  * this exchange |
  */
 export interface ExchangesID {
-    data:      ExchangesData;
-    timestamp: number;
+  data: ExchangesData;
+  timestamp: number;
 }
 
 /**
@@ -419,23 +425,23 @@ export interface ExchangesID {
  * from this particular market |
  */
 export interface Markets {
-    data:      MarketsDatum[];
-    timestamp: number;
+  data: MarketsDatum[];
+  timestamp: number;
 }
 
 export interface MarketsDatum {
-    exchangeId:            string;
-    rank:                  string;
-    baseSymbol:            string;
-    baseId:                string;
-    quoteSymbol:           string;
-    quoteId:               string;
-    priceQuote:            string;
-    priceUsd:              string;
-    volumeUsd24Hr:         null | string;
-    percentExchangeVolume: null | string;
-    tradesCount24Hr:       null | string;
-    updated:               number;
+  exchangeId: string;
+  rank: string;
+  baseSymbol: string;
+  baseId: string;
+  quoteSymbol: string;
+  quoteId: string;
+  priceQuote: string;
+  priceUsd: string;
+  volumeUsd24Hr: null | string;
+  percentExchangeVolume: null | string;
+  tradesCount24Hr: null | string;
+  updated: number;
 }
 
 /**
@@ -475,352 +481,395 @@ export interface MarketsDatum {
  * milliseconds |
  */
 export interface Candles {
-    data:      CandlesDatum[];
-    timestamp: number;
+  data: CandlesDatum[];
+  timestamp: number;
 }
 
 export interface CandlesDatum {
-    open:   string;
-    high:   string;
-    low:    string;
-    close:  string;
-    volume: string;
-    period: number;
+  open: string;
+  high: string;
+  low: string;
+  close: string;
+  volume: string;
+  period: number;
 }
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toAssets(json: string): Assets {
-        return cast(JSON.parse(json), r("Assets"));
-    }
+  public static toAssets(json: string): Assets {
+    return cast(JSON.parse(json), r("Assets"));
+  }
 
-    public static assetsToJson(value: Assets): string {
-        return JSON.stringify(uncast(value, r("Assets")), null, 2);
-    }
+  public static assetsToJson(value: Assets): string {
+    return JSON.stringify(uncast(value, r("Assets")), null, 2);
+  }
 
-    public static toAssetsID(json: string): AssetsID {
-        return cast(JSON.parse(json), r("AssetsID"));
-    }
+  public static toAssetsID(json: string): AssetsID {
+    return cast(JSON.parse(json), r("AssetsID"));
+  }
 
-    public static assetsIDToJson(value: AssetsID): string {
-        return JSON.stringify(uncast(value, r("AssetsID")), null, 2);
-    }
+  public static assetsIDToJson(value: AssetsID): string {
+    return JSON.stringify(uncast(value, r("AssetsID")), null, 2);
+  }
 
-    public static toAssetsIDHistory(json: string): AssetsIDHistory {
-        return cast(JSON.parse(json), r("AssetsIDHistory"));
-    }
+  public static toAssetsIDHistory(json: string): AssetsIDHistory {
+    return cast(JSON.parse(json), r("AssetsIDHistory"));
+  }
 
-    public static assetsIDHistoryToJson(value: AssetsIDHistory): string {
-        return JSON.stringify(uncast(value, r("AssetsIDHistory")), null, 2);
-    }
+  public static assetsIDHistoryToJson(value: AssetsIDHistory): string {
+    return JSON.stringify(uncast(value, r("AssetsIDHistory")), null, 2);
+  }
 
-    public static toAssetsIDMarkets(json: string): AssetsIDMarkets {
-        return cast(JSON.parse(json), r("AssetsIDMarkets"));
-    }
+  public static toAssetsIDMarkets(json: string): AssetsIDMarkets {
+    return cast(JSON.parse(json), r("AssetsIDMarkets"));
+  }
 
-    public static assetsIDMarketsToJson(value: AssetsIDMarkets): string {
-        return JSON.stringify(uncast(value, r("AssetsIDMarkets")), null, 2);
-    }
+  public static assetsIDMarketsToJson(value: AssetsIDMarkets): string {
+    return JSON.stringify(uncast(value, r("AssetsIDMarkets")), null, 2);
+  }
 
-    public static toRates(json: string): Rates {
-        return cast(JSON.parse(json), r("Rates"));
-    }
+  public static toRates(json: string): Rates {
+    return cast(JSON.parse(json), r("Rates"));
+  }
 
-    public static ratesToJson(value: Rates): string {
-        return JSON.stringify(uncast(value, r("Rates")), null, 2);
-    }
+  public static ratesToJson(value: Rates): string {
+    return JSON.stringify(uncast(value, r("Rates")), null, 2);
+  }
 
-    public static toRatesID(json: string): RatesID {
-        return cast(JSON.parse(json), r("RatesID"));
-    }
+  public static toRatesID(json: string): RatesID {
+    return cast(JSON.parse(json), r("RatesID"));
+  }
 
-    public static ratesIDToJson(value: RatesID): string {
-        return JSON.stringify(uncast(value, r("RatesID")), null, 2);
-    }
+  public static ratesIDToJson(value: RatesID): string {
+    return JSON.stringify(uncast(value, r("RatesID")), null, 2);
+  }
 
-    public static toExchanges(json: string): Exchanges {
-        return cast(JSON.parse(json), r("Exchanges"));
-    }
+  public static toExchanges(json: string): Exchanges {
+    return cast(JSON.parse(json), r("Exchanges"));
+  }
 
-    public static exchangesToJson(value: Exchanges): string {
-        return JSON.stringify(uncast(value, r("Exchanges")), null, 2);
-    }
+  public static exchangesToJson(value: Exchanges): string {
+    return JSON.stringify(uncast(value, r("Exchanges")), null, 2);
+  }
 
-    public static toExchangesID(json: string): ExchangesID {
-        return cast(JSON.parse(json), r("ExchangesID"));
-    }
+  public static toExchangesID(json: string): ExchangesID {
+    return cast(JSON.parse(json), r("ExchangesID"));
+  }
 
-    public static exchangesIDToJson(value: ExchangesID): string {
-        return JSON.stringify(uncast(value, r("ExchangesID")), null, 2);
-    }
+  public static exchangesIDToJson(value: ExchangesID): string {
+    return JSON.stringify(uncast(value, r("ExchangesID")), null, 2);
+  }
 
-    public static toMarkets(json: string): Markets {
-        return cast(JSON.parse(json), r("Markets"));
-    }
+  public static toMarkets(json: string): Markets {
+    return cast(JSON.parse(json), r("Markets"));
+  }
 
-    public static marketsToJson(value: Markets): string {
-        return JSON.stringify(uncast(value, r("Markets")), null, 2);
-    }
+  public static marketsToJson(value: Markets): string {
+    return JSON.stringify(uncast(value, r("Markets")), null, 2);
+  }
 
-    public static toCandles(json: string): Candles {
-        return cast(JSON.parse(json), r("Candles"));
-    }
+  public static toCandles(json: string): Candles {
+    return cast(JSON.parse(json), r("Candles"));
+  }
 
-    public static candlesToJson(value: Candles): string {
-        return JSON.stringify(uncast(value, r("Candles")), null, 2);
-    }
+  public static candlesToJson(value: Candles): string {
+    return JSON.stringify(uncast(value, r("Candles")), null, 2);
+  }
 }
 
-function invalidValue(typ: any, val: any, key: any = ''): never {
-    if (key) {
-        throw Error(`Invalid value for key "${key}". Expected type ${JSON.stringify(typ)} but got ${JSON.stringify(val)}`);
-    }
-    throw Error(`Invalid value ${JSON.stringify(val)} for type ${JSON.stringify(typ)}`, );
+function invalidValue(typ: any, val: any, key: any = ""): never {
+  if (key) {
+    throw Error(
+      `Invalid value for key "${key}". Expected type ${JSON.stringify(
+        typ,
+      )} but got ${JSON.stringify(val)}`,
+    );
+  }
+  throw Error(`Invalid value ${JSON.stringify(val)} for type ${JSON.stringify(typ)}`);
 }
 
 function jsonToJSProps(typ: any): any {
-    if (typ.jsonToJS === undefined) {
-        const map: any = {};
-        typ.props.forEach((p: any) => map[p.json] = { key: p.js, typ: p.typ });
-        typ.jsonToJS = map;
-    }
-    return typ.jsonToJS;
+  if (typ.jsonToJS === undefined) {
+    const map: any = {};
+    typ.props.forEach((p: any) => (map[p.json] = { key: p.js, typ: p.typ }));
+    typ.jsonToJS = map;
+  }
+  return typ.jsonToJS;
 }
 
 function jsToJSONProps(typ: any): any {
-    if (typ.jsToJSON === undefined) {
-        const map: any = {};
-        typ.props.forEach((p: any) => map[p.js] = { key: p.json, typ: p.typ });
-        typ.jsToJSON = map;
-    }
-    return typ.jsToJSON;
+  if (typ.jsToJSON === undefined) {
+    const map: any = {};
+    typ.props.forEach((p: any) => (map[p.js] = { key: p.json, typ: p.typ }));
+    typ.jsToJSON = map;
+  }
+  return typ.jsToJSON;
 }
 
-function transform(val: any, typ: any, getProps: any, key: any = ''): any {
-    function transformPrimitive(typ: string, val: any): any {
-        if (typeof typ === typeof val) return val;
-        return invalidValue(typ, val, key);
-    }
+function transform(val: any, typ: any, getProps: any, key: any = ""): any {
+  function transformPrimitive(typ: string, val: any): any {
+    if (typeof typ === typeof val) return val;
+    return invalidValue(typ, val, key);
+  }
 
-    function transformUnion(typs: any[], val: any): any {
-        // val must validate against one typ in typs
-        const l = typs.length;
-        for (let i = 0; i < l; i++) {
-            const typ = typs[i];
-            try {
-                return transform(val, typ, getProps);
-            } catch (_) {}
-        }
-        return invalidValue(typs, val);
+  function transformUnion(typs: any[], val: any): any {
+    // val must validate against one typ in typs
+    const l = typs.length;
+    for (let i = 0; i < l; i++) {
+      const typ = typs[i];
+      try {
+        return transform(val, typ, getProps);
+      } catch (_) {}
     }
+    return invalidValue(typs, val);
+  }
 
-    function transformEnum(cases: string[], val: any): any {
-        if (cases.indexOf(val) !== -1) return val;
-        return invalidValue(cases, val);
-    }
+  function transformEnum(cases: string[], val: any): any {
+    if (cases.indexOf(val) !== -1) return val;
+    return invalidValue(cases, val);
+  }
 
-    function transformArray(typ: any, val: any): any {
-        // val must be an array with no invalid elements
-        if (!Array.isArray(val)) return invalidValue("array", val);
-        return val.map(el => transform(el, typ, getProps));
-    }
+  function transformArray(typ: any, val: any): any {
+    // val must be an array with no invalid elements
+    if (!Array.isArray(val)) return invalidValue("array", val);
+    return val.map((el) => transform(el, typ, getProps));
+  }
 
-    function transformDate(val: any): any {
-        if (val === null) {
-            return null;
-        }
-        const d = new Date(val);
-        if (isNaN(d.valueOf())) {
-            return invalidValue("Date", val);
-        }
-        return d;
+  function transformDate(val: any): any {
+    if (val === null) {
+      return null;
     }
+    const d = new Date(val);
+    if (isNaN(d.valueOf())) {
+      return invalidValue("Date", val);
+    }
+    return d;
+  }
 
-    function transformObject(props: { [k: string]: any }, additional: any, val: any): any {
-        if (val === null || typeof val !== "object" || Array.isArray(val)) {
-            return invalidValue("object", val);
-        }
-        const result: any = {};
-        Object.getOwnPropertyNames(props).forEach(key => {
-            const prop = props[key];
-            const v = Object.prototype.hasOwnProperty.call(val, key) ? val[key] : undefined;
-            result[prop.key] = transform(v, prop.typ, getProps, prop.key);
-        });
-        Object.getOwnPropertyNames(val).forEach(key => {
-            if (!Object.prototype.hasOwnProperty.call(props, key)) {
-                result[key] = transform(val[key], additional, getProps, key);
-            }
-        });
-        return result;
+  function transformObject(props: { [k: string]: any }, additional: any, val: any): any {
+    if (val === null || typeof val !== "object" || Array.isArray(val)) {
+      return invalidValue("object", val);
     }
+    const result: any = {};
+    Object.getOwnPropertyNames(props).forEach((key) => {
+      const prop = props[key];
+      const v = Object.prototype.hasOwnProperty.call(val, key) ? val[key] : undefined;
+      result[prop.key] = transform(v, prop.typ, getProps, prop.key);
+    });
+    Object.getOwnPropertyNames(val).forEach((key) => {
+      if (!Object.prototype.hasOwnProperty.call(props, key)) {
+        result[key] = transform(val[key], additional, getProps, key);
+      }
+    });
+    return result;
+  }
 
-    if (typ === "any") return val;
-    if (typ === null) {
-        if (val === null) return val;
-        return invalidValue(typ, val);
-    }
-    if (typ === false) return invalidValue(typ, val);
-    while (typeof typ === "object" && typ.ref !== undefined) {
-        typ = typeMap[typ.ref];
-    }
-    if (Array.isArray(typ)) return transformEnum(typ, val);
-    if (typeof typ === "object") {
-        return typ.hasOwnProperty("unionMembers") ? transformUnion(typ.unionMembers, val)
-            : typ.hasOwnProperty("arrayItems")    ? transformArray(typ.arrayItems, val)
-            : typ.hasOwnProperty("props")         ? transformObject(getProps(typ), typ.additional, val)
-            : invalidValue(typ, val);
-    }
-    // Numbers can be parsed by Date but shouldn't be.
-    if (typ === Date && typeof val !== "number") return transformDate(val);
-    return transformPrimitive(typ, val);
+  if (typ === "any") return val;
+  if (typ === null) {
+    if (val === null) return val;
+    return invalidValue(typ, val);
+  }
+  if (typ === false) return invalidValue(typ, val);
+  while (typeof typ === "object" && typ.ref !== undefined) {
+    typ = typeMap[typ.ref];
+  }
+  if (Array.isArray(typ)) return transformEnum(typ, val);
+  if (typeof typ === "object") {
+    return typ.hasOwnProperty("unionMembers")
+      ? transformUnion(typ.unionMembers, val)
+      : typ.hasOwnProperty("arrayItems")
+      ? transformArray(typ.arrayItems, val)
+      : typ.hasOwnProperty("props")
+      ? transformObject(getProps(typ), typ.additional, val)
+      : invalidValue(typ, val);
+  }
+  // Numbers can be parsed by Date but shouldn't be.
+  if (typ === Date && typeof val !== "number") return transformDate(val);
+  return transformPrimitive(typ, val);
 }
 
 function cast<T>(val: any, typ: any): T {
-    return transform(val, typ, jsonToJSProps);
+  return transform(val, typ, jsonToJSProps);
 }
 
 function uncast<T>(val: T, typ: any): any {
-    return transform(val, typ, jsToJSONProps);
+  return transform(val, typ, jsToJSONProps);
 }
 
 function a(typ: any) {
-    return { arrayItems: typ };
+  return { arrayItems: typ };
 }
 
 function u(...typs: any[]) {
-    return { unionMembers: typs };
+  return { unionMembers: typs };
 }
 
 function o(props: any[], additional: any) {
-    return { props, additional };
+  return { props, additional };
 }
 
 function m(additional: any) {
-    return { props: [], additional };
+  return { props: [], additional };
 }
 
 function r(name: string) {
-    return { ref: name };
+  return { ref: name };
 }
 
 const typeMap: any = {
-    "Assets": o([
-        { json: "data", js: "data", typ: a(m(u(null, ""))) },
-        { json: "timestamp", js: "timestamp", typ: 0 },
-    ], false),
-    "AssetsID": o([
-        { json: "data", js: "data", typ: m(u(null, "")) },
-        { json: "timestamp", js: "timestamp", typ: 0 },
-    ], false),
-    "AssetsIDHistory": o([
-        { json: "data", js: "data", typ: a(r("AssetsIDHistoryDatum")) },
-        { json: "timestamp", js: "timestamp", typ: 0 },
-    ], false),
-    "AssetsIDHistoryDatum": o([
-        { json: "priceUsd", js: "priceUsd", typ: "" },
-        { json: "time", js: "time", typ: 0 },
-    ], false),
-    "AssetsIDMarkets": o([
-        { json: "data", js: "data", typ: a(r("AssetsIDMarketsDatum")) },
-        { json: "timestamp", js: "timestamp", typ: 0 },
-    ], false),
-    "AssetsIDMarketsDatum": o([
-        { json: "exchangeId", js: "exchangeId", typ: "" },
-        { json: "baseId", js: "baseId", typ: "" },
-        { json: "quoteId", js: "quoteId", typ: r("QuoteID") },
-        { json: "baseSymbol", js: "baseSymbol", typ: "" },
-        { json: "quoteSymbol", js: "quoteSymbol", typ: r("QuoteSymbol") },
-        { json: "volumeUsd24Hr", js: "volumeUsd24Hr", typ: "" },
-        { json: "priceUsd", js: "priceUsd", typ: "" },
-        { json: "volumePercent", js: "volumePercent", typ: "" },
-    ], false),
-    "Rates": o([
-        { json: "data", js: "data", typ: a(r("RatesData")) },
-        { json: "timestamp", js: "timestamp", typ: 0 },
-    ], false),
-    "RatesData": o([
-        { json: "id", js: "id", typ: "" },
-        { json: "symbol", js: "symbol", typ: "" },
-        { json: "currencySymbol", js: "currencySymbol", typ: u(null, "") },
-        { json: "type", js: "type", typ: r("Type") },
-        { json: "rateUsd", js: "rateUsd", typ: "" },
-    ], false),
-    "RatesID": o([
-        { json: "data", js: "data", typ: r("RatesData") },
-        { json: "timestamp", js: "timestamp", typ: 0 },
-    ], false),
-    "Exchanges": o([
-        { json: "data", js: "data", typ: a(r("ExchangesData")) },
-        { json: "timestamp", js: "timestamp", typ: 0 },
-    ], false),
-    "ExchangesData": o([
-        { json: "id", js: "id", typ: "" },
-        { json: "name", js: "name", typ: "" },
-        { json: "rank", js: "rank", typ: "" },
-        { json: "percentTotalVolume", js: "percentTotalVolume", typ: "" },
-        { json: "volumeUsd", js: "volumeUsd", typ: "" },
-        { json: "tradingPairs", js: "tradingPairs", typ: "" },
-        { json: "socket", js: "socket", typ: true },
-        { json: "exchangeUrl", js: "exchangeUrl", typ: "" },
-        { json: "updated", js: "updated", typ: 0 },
-    ], false),
-    "ExchangesID": o([
-        { json: "data", js: "data", typ: r("ExchangesData") },
-        { json: "timestamp", js: "timestamp", typ: 0 },
-    ], false),
-    "Markets": o([
-        { json: "data", js: "data", typ: a(r("MarketsDatum")) },
-        { json: "timestamp", js: "timestamp", typ: 0 },
-    ], false),
-    "MarketsDatum": o([
-        { json: "exchangeId", js: "exchangeId", typ: "" },
-        { json: "rank", js: "rank", typ: "" },
-        { json: "baseSymbol", js: "baseSymbol", typ: "" },
-        { json: "baseId", js: "baseId", typ: "" },
-        { json: "quoteSymbol", js: "quoteSymbol", typ: "" },
-        { json: "quoteId", js: "quoteId", typ: "" },
-        { json: "priceQuote", js: "priceQuote", typ: "" },
-        { json: "priceUsd", js: "priceUsd", typ: "" },
-        { json: "volumeUsd24Hr", js: "volumeUsd24Hr", typ: u(null, "") },
-        { json: "percentExchangeVolume", js: "percentExchangeVolume", typ: u(null, "") },
-        { json: "tradesCount24Hr", js: "tradesCount24Hr", typ: u(null, "") },
-        { json: "updated", js: "updated", typ: 0 },
-    ], false),
-    "Candles": o([
-        { json: "data", js: "data", typ: a(r("CandlesDatum")) },
-        { json: "timestamp", js: "timestamp", typ: 0 },
-    ], false),
-    "CandlesDatum": o([
-        { json: "open", js: "open", typ: "" },
-        { json: "high", js: "high", typ: "" },
-        { json: "low", js: "low", typ: "" },
-        { json: "close", js: "close", typ: "" },
-        { json: "volume", js: "volume", typ: "" },
-        { json: "period", js: "period", typ: 0 },
-    ], false),
-    "QuoteID": [
-        "bitcoin",
-        "euro",
-        "japanese-yen",
-        "polish-zloty",
-        "russian-ruble",
-        "south-korean-won",
-        "tether",
-        "united-states-dollar",
+  Assets: o(
+    [
+      { json: "data", js: "data", typ: a(m(u(null, ""))) },
+      { json: "timestamp", js: "timestamp", typ: 0 },
     ],
-    "QuoteSymbol": [
-        "BTC",
-        "EUR",
-        "JPY",
-        "KRW",
-        "PLN",
-        "RUB",
-        "USD",
-        "USDT",
+    false,
+  ),
+  AssetsID: o(
+    [
+      { json: "data", js: "data", typ: m(u(null, "")) },
+      { json: "timestamp", js: "timestamp", typ: 0 },
     ],
-    "Type": [
-        "crypto",
-        "fiat",
+    false,
+  ),
+  AssetsIDHistory: o(
+    [
+      { json: "data", js: "data", typ: a(r("AssetsIDHistoryDatum")) },
+      { json: "timestamp", js: "timestamp", typ: 0 },
     ],
+    false,
+  ),
+  AssetsIDHistoryDatum: o(
+    [
+      { json: "priceUsd", js: "priceUsd", typ: "" },
+      { json: "time", js: "time", typ: 0 },
+    ],
+    false,
+  ),
+  AssetsIDMarkets: o(
+    [
+      { json: "data", js: "data", typ: a(r("AssetsIDMarketsDatum")) },
+      { json: "timestamp", js: "timestamp", typ: 0 },
+    ],
+    false,
+  ),
+  AssetsIDMarketsDatum: o(
+    [
+      { json: "exchangeId", js: "exchangeId", typ: "" },
+      { json: "baseId", js: "baseId", typ: "" },
+      { json: "quoteId", js: "quoteId", typ: r("QuoteID") },
+      { json: "baseSymbol", js: "baseSymbol", typ: "" },
+      { json: "quoteSymbol", js: "quoteSymbol", typ: r("QuoteSymbol") },
+      { json: "volumeUsd24Hr", js: "volumeUsd24Hr", typ: "" },
+      { json: "priceUsd", js: "priceUsd", typ: "" },
+      { json: "volumePercent", js: "volumePercent", typ: "" },
+    ],
+    false,
+  ),
+  Rates: o(
+    [
+      { json: "data", js: "data", typ: a(r("RatesData")) },
+      { json: "timestamp", js: "timestamp", typ: 0 },
+    ],
+    false,
+  ),
+  RatesData: o(
+    [
+      { json: "id", js: "id", typ: "" },
+      { json: "symbol", js: "symbol", typ: "" },
+      { json: "currencySymbol", js: "currencySymbol", typ: u(null, "") },
+      { json: "type", js: "type", typ: r("Type") },
+      { json: "rateUsd", js: "rateUsd", typ: "" },
+    ],
+    false,
+  ),
+  RatesID: o(
+    [
+      { json: "data", js: "data", typ: r("RatesData") },
+      { json: "timestamp", js: "timestamp", typ: 0 },
+    ],
+    false,
+  ),
+  Exchanges: o(
+    [
+      { json: "data", js: "data", typ: a(r("ExchangesData")) },
+      { json: "timestamp", js: "timestamp", typ: 0 },
+    ],
+    false,
+  ),
+  ExchangesData: o(
+    [
+      { json: "id", js: "id", typ: "" },
+      { json: "name", js: "name", typ: "" },
+      { json: "rank", js: "rank", typ: "" },
+      { json: "percentTotalVolume", js: "percentTotalVolume", typ: "" },
+      { json: "volumeUsd", js: "volumeUsd", typ: "" },
+      { json: "tradingPairs", js: "tradingPairs", typ: "" },
+      { json: "socket", js: "socket", typ: true },
+      { json: "exchangeUrl", js: "exchangeUrl", typ: "" },
+      { json: "updated", js: "updated", typ: 0 },
+    ],
+    false,
+  ),
+  ExchangesID: o(
+    [
+      { json: "data", js: "data", typ: r("ExchangesData") },
+      { json: "timestamp", js: "timestamp", typ: 0 },
+    ],
+    false,
+  ),
+  Markets: o(
+    [
+      { json: "data", js: "data", typ: a(r("MarketsDatum")) },
+      { json: "timestamp", js: "timestamp", typ: 0 },
+    ],
+    false,
+  ),
+  MarketsDatum: o(
+    [
+      { json: "exchangeId", js: "exchangeId", typ: "" },
+      { json: "rank", js: "rank", typ: "" },
+      { json: "baseSymbol", js: "baseSymbol", typ: "" },
+      { json: "baseId", js: "baseId", typ: "" },
+      { json: "quoteSymbol", js: "quoteSymbol", typ: "" },
+      { json: "quoteId", js: "quoteId", typ: "" },
+      { json: "priceQuote", js: "priceQuote", typ: "" },
+      { json: "priceUsd", js: "priceUsd", typ: "" },
+      { json: "volumeUsd24Hr", js: "volumeUsd24Hr", typ: u(null, "") },
+      { json: "percentExchangeVolume", js: "percentExchangeVolume", typ: u(null, "") },
+      { json: "tradesCount24Hr", js: "tradesCount24Hr", typ: u(null, "") },
+      { json: "updated", js: "updated", typ: 0 },
+    ],
+    false,
+  ),
+  Candles: o(
+    [
+      { json: "data", js: "data", typ: a(r("CandlesDatum")) },
+      { json: "timestamp", js: "timestamp", typ: 0 },
+    ],
+    false,
+  ),
+  CandlesDatum: o(
+    [
+      { json: "open", js: "open", typ: "" },
+      { json: "high", js: "high", typ: "" },
+      { json: "low", js: "low", typ: "" },
+      { json: "close", js: "close", typ: "" },
+      { json: "volume", js: "volume", typ: "" },
+      { json: "period", js: "period", typ: 0 },
+    ],
+    false,
+  ),
+  QuoteID: [
+    "bitcoin",
+    "euro",
+    "japanese-yen",
+    "polish-zloty",
+    "russian-ruble",
+    "south-korean-won",
+    "tether",
+    "united-states-dollar",
+  ],
+  QuoteSymbol: ["BTC", "EUR", "JPY", "KRW", "PLN", "RUB", "USD", "USDT"],
+  Type: ["crypto", "fiat"],
 };

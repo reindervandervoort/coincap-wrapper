@@ -9,7 +9,7 @@
       "spec": {
         "servers": [
           {
-            "url": "http://127.0.0.1:80/api/v1",
+            "url": "http://localhost/api/v1",
             "description": "Local development"
           }
         ]
@@ -19,11 +19,35 @@
       "outputDirectory": "./api/v1",
       "tags": [
         {
-          "name": "Application",
-          "description": "Placeholder for Application Service",
+          "name": "Health",
+          "description": "Health check endpoint(s)",
           "externalDocs": {
-            "description": "API endpoint",
-            "url": "https://api-pmis.bbjnyc.com/api/v1/application"
+            "description": "Health check endpoint(s)",
+            "url": "https://localhost/api/v1/health"
+          }
+        },
+        {
+          "name": "Asset",
+          "description": "The asset price is a volume-weighted average calculated by collecting ticker data from exchanges. Each exchange contributes to this price in relation to their volume, meaning higher volume exchanges have more affect on this global price. All values are translated into USD (United States Dollar) and can be translated into other units of measurement through the /rates endpoint.",
+          "externalDocs": {
+            "description": "The asset price is a volume-weighted average calculated by collecting ticker data from exchanges. Each exchange contributes to this price in relation to their volume, meaning higher volume exchanges have more affect on this global price. All values are translated into USD (United States Dollar) and can be translated into other units of measurement through the /rates endpoint.",
+            "url": "https://localhost/api/v1/asset"
+          }
+        },
+        {
+          "name": "Wallet",
+          "description": "The wallet endpoints",
+          "externalDocs": {
+            "description": "The wallet endpoints",
+            "url": "https://localhost/api/v1/wallet"
+          }
+        },
+        {
+          "name": "Transaction",
+          "description": "The transaction endpoints",
+          "externalDocs": {
+            "description": "The transaction endpoints",
+            "url": "https://localhost/api/v1/transaction"
           }
         }
       ]

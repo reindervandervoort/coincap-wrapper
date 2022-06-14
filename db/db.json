@@ -1,0 +1,169 @@
+{
+  "wallet": [
+    {
+      "balances": {
+        "ethereum": 220,
+        "bitcoin": 46
+      },
+      "balanceUSDEquivalenceAtPurchase": 87988.98163826796,
+      "id": "9f465659-fd89-4ea4-a1b8-a7a4ab9cea3d"
+    },
+    {
+      "balances": {
+        "ethereum": 80,
+        "bitcoin": 29
+      },
+      "balanceUSDEquivalenceAtPurchase": 212011.01836173204,
+      "id": "573850f3-934f-485d-bff3-fef440204fe6"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "32fa360d-0271-469d-afee-d01f826d8600"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "f25bc20f-ccc0-4bb4-8dc6-922e2fc50a30"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "ddcbb909-a558-46c2-8823-127137ab0bb5"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "fc7662f0-0600-4b30-b0cb-64be717581c8"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "85957d1e-ac92-40f0-b552-dce3fb4230c2"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "870263cd-06ba-4ccb-ade5-42eaaeb8259f"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "8ee227bb-a10d-464d-9377-36c4f88e9a39"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "0a9c99f5-3e68-415c-9699-5f478bd37c24"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "ccb986f3-7aab-4865-83d4-b5bc2173b2a8"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "91664c08-408c-4266-9873-689d14d31c2c"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "9aedba29-ab5b-491e-8f40-b7c5ca3ebe96"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "3a092126-b646-4c6c-9704-2a365f492714"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "7b124182-a0fd-4b6a-aa23-6b8971b119af"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "035d340e-8246-4e9d-8cb8-dd12a42ae6bc"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "dc754c0f-a85e-40e4-9e82-428cb6312158"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "82214492-8a62-4acd-a5cf-1aabde99cd53"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "c60119e9-f4ea-476a-b712-5c59f88100ce"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "e340c198-77d7-4e50-97d2-b0ce9874e78d"
+    },
+    {
+      "balances": {},
+      "balanceUSDEquivalenceAtPurchase": 0,
+      "id": "3367e5aa-c849-409d-84e8-62e0318c2330"
+    }
+  ],
+  "transaction": [
+    {
+      "purchased": {
+        "assetId": "ethereum",
+        "quantity": 5
+      },
+      "mediumOfExchange": {
+        "assetId": "bitcoin",
+        "quantity": 1
+      },
+      "walletTo": "573850f3-934f-485d-bff3-fef440204fe6",
+      "walletFrom": "9f465659-fd89-4ea4-a1b8-a7a4ab9cea3d",
+      "id": "9f6651dc-fea7-466b-99a3-e23964e9d275"
+    },
+    {
+      "purchased": {
+        "assetId": "ethereum",
+        "quantity": 5
+      },
+      "mediumOfExchange": {
+        "assetId": "bitcoin",
+        "quantity": 1
+      },
+      "walletTo": "573850f3-934f-485d-bff3-fef440204fe6",
+      "walletFrom": "9f465659-fd89-4ea4-a1b8-a7a4ab9cea3d",
+      "id": "57f12b6d-d0fe-4402-b857-f2707942b624"
+    },
+    {
+      "purchased": {
+        "assetId": "ethereum",
+        "quantity": 5
+      },
+      "mediumOfExchange": {
+        "assetId": "bitcoin",
+        "quantity": 1
+      },
+      "walletTo": "573850f3-934f-485d-bff3-fef440204fe6",
+      "walletFrom": "9f465659-fd89-4ea4-a1b8-a7a4ab9cea3d",
+      "id": "845c1279-ebee-45f2-b7c0-e7a088eb42f1"
+    },
+    {
+      "purchased": {
+        "assetId": "ethereum",
+        "quantity": 5
+      },
+      "mediumOfExchange": {
+        "assetId": "bitcoin",
+        "quantity": 1
+      },
+      "walletTo": "573850f3-934f-485d-bff3-fef440204fe6",
+      "walletFrom": "9f465659-fd89-4ea4-a1b8-a7a4ab9cea3d",
+      "id": "9af17bac-adfb-47a2-bdff-a29b5dd62548"
+    }
+  ]
+}

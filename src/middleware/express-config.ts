@@ -4,11 +4,11 @@ import * as expressWinston from "express-winston";
 import swaggerUI from "swagger-ui-express";
 import * as bodyParser from "body-parser";
 import cors from "cors";
-
 import { RegisterRoutes } from "./routes";
 
 import loggerOptions from "./logger-options";
 import logger from "./logger";
+import ClientError from "../service-layer/controllers/models/client.error";
 
 export default class ExpressConfig {
   app: express.Express;
@@ -61,6 +61,15 @@ export default class ExpressConfig {
           status: 422,
           message: "Validation Failed",
           reason: err?.fields,
+        });
+      }
+
+      if (err instanceof ClientError) {
+        logger.warn(err);
+        return res.status(err.status ?? 422).json({
+          status: err.status,
+          message: err.message,
+          reason: err.reason ?? "",
         });
       }
 
